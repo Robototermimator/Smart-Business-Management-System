@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Business Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="loginView" class="auth-layout">
+      <div class="auth-card">
+        <h1>Smart Business Management System</h1>
+        <p class="muted">Secure access required to manage enterprise operations.</p>
+        <form id="loginForm" class="form-grid">
+          <label for="password">Admin Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <small class="muted">Demo password: <strong>Admin@123</strong></small>
+      </div>
+    </div>
+
+    <div id="appView" class="app hidden">
+      <aside class="sidebar">
+        <div class="brand">
+          <h2>SBMS</h2>
+          <p>Enterprise Suite</p>
+        </div>
+        <nav>
+          <button class="nav-link active" data-section="dashboardSection">Dashboard</button>
+          <button class="nav-link" data-section="customersSection">Customers</button>
+          <button class="nav-link" data-section="productsSection">Products</button>
+          <button class="nav-link" data-section="ordersSection">Orders</button>
+          <button class="nav-link" data-section="cloudSection">Cloud Tools</button>
+        </nav>
+      </aside>
+
+      <div class="main-shell">
+        <header class="topbar">
+          <h1 id="sectionTitle">Dashboard</h1>
+          <div class="top-actions">
+            <button id="themeToggle" class="btn btn-ghost" type="button">🌙 Dark Mode</button>
+            <button id="logoutBtn" class="btn btn-danger" type="button">Logout</button>
+          </div>
+        </header>
+
+        <main class="content">
+          <section id="dashboardSection" class="section active">
+            <div class="grid kpi-grid">
+              <article class="card kpi-card">
+                <h3>Total Customers</h3>
+                <p id="kpiCustomers">0</p>
+              </article>
+              <article class="card kpi-card">
+                <h3>Total Orders</h3>
+                <p id="kpiOrders">0</p>
+              </article>
+              <article class="card kpi-card">
+                <h3>Total Revenue</h3>
+                <p id="kpiRevenue">R 0.00</p>
+              </article>
+              <article class="card kpi-card">
+                <h3>Most Popular Product</h3>
+                <p id="kpiPopular">—</p>
+              </article>
+            </div>
+            <div class="card">
+              <h3>Revenue Trend</h3>
+              <canvas id="revenueChart" aria-label="Revenue trend chart"></canvas>
+            </div>
+          </section>
+
+          <section id="customersSection" class="section">
+            <div class="section-head">
+              <h2>Customer Management</h2>
+            </div>
+            <div class="card">
+              <form id="customerForm" class="form-grid inline-3">
+                <input type="hidden" id="customerId" />
+                <div>
+                  <label for="customerName">Customer Name</label>
+                  <input id="customerName" required placeholder="e.g. Alice Mokoena" />
+                </div>
+                <div>
+                  <label for="customerEmail">Email</label>
+                  <input id="customerEmail" type="email" required placeholder="e.g. alice@company.com" />
+                </div>
+                <div>
+                  <label for="customerTier">Tier</label>
+                  <select id="customerTier" required>
+                    <option value="">Select tier</option>
+                    <option>Standard</option>
+                    <option>Premium</option>
+                    <option>Enterprise</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" type="submit" id="saveCustomerBtn">Add Customer</button>
+              </form>
+            </div>
+            <div class="toolbar">
+              <input id="customerSearch" placeholder="Search customers by name/email" />
+            </div>
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Tier</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="customerTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="productsSection" class="section">
+            <div class="section-head">
+              <h2>Product Management</h2>
+            </div>
+            <div class="card">
+              <form id="productForm" class="form-grid inline-4">
+                <input type="hidden" id="productId" />
+                <div>
+                  <label for="productName">Product Name</label>
+                  <input id="productName" required placeholder="e.g. CRM Subscription" />
+                </div>
+                <div>
+                  <label for="productPrice">Price (ZAR)</label>
+                  <input id="productPrice" type="number" step="0.01" min="0" required placeholder="0.00" />
+                </div>
+                <div>
+                  <label for="productCategory">Category</label>
+                  <select id="productCategory" required>
+                    <option value="">Select category</option>
+                    <option>Software</option>
+                    <option>Hardware</option>
+                    <option>Services</option>
+                    <option>Support</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="productSort">Sort By</label>
+                  <select id="productSort">
+                    <option value="nameAsc">Name (A-Z)</option>
+                    <option value="priceAsc">Price (Low-High)</option>
+                    <option value="priceDesc">Price (High-Low)</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" type="submit" id="saveProductBtn">Add Product</button>
+              </form>
+            </div>
+            <div class="toolbar">
+              <input id="productSearch" placeholder="Search products by name/category" />
+            </div>
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="ordersSection" class="section">
+            <div class="section-head">
+              <h2>Order Management</h2>
+            </div>
+            <div class="card">
+              <form id="orderForm" class="form-grid inline-4">
+                <div>
+                  <label for="orderCustomer">Customer</label>
+                  <select id="orderCustomer" required></select>
+                </div>
+                <div>
+                  <label for="orderProduct">Product</label>
+                  <select id="orderProduct" required></select>
+                </div>
+                <div>
+                  <label for="orderQuantity">Quantity</label>
+                  <input id="orderQuantity" type="number" min="1" value="1" required />
+                </div>
+                <div>
+                  <label>Calculated Total</label>
+                  <div class="calculated" id="orderTotal">R 0.00</div>
+                </div>
+                <button class="btn btn-primary" type="submit">Create Order</button>
+              </form>
+            </div>
+            <div class="toolbar inline">
+              <select id="orderCustomerFilter">
+                <option value="all">Filter by customer: All</option>
+              </select>
+              <select id="orderSort">
+                <option value="dateDesc">Newest first</option>
+                <option value="dateAsc">Oldest first</option>
+                <option value="amountDesc">Highest amount</option>
+                <option value="amountAsc">Lowest amount</option>
+              </select>
+            </div>
+            <div class="card table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Timestamp</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orderTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="cloudSection" class="section">
+            <div class="section-head">
+              <h2>Cloud Simulation</h2>
+            </div>
+            <div class="grid two-col">
+              <article class="card">
+                <h3>Backup to Cloud (JSON)</h3>
+                <p class="muted">This simulates cloud backup by exporting local data to a portable JSON file.</p>
+                <button id="backupBtn" class="btn btn-primary" type="button">Backup Data</button>
+                <button id="exportCsvBtn" class="btn btn-secondary" type="button">Export Orders CSV</button>
+              </article>
+              <article class="card">
+                <h3>Restore from Backup</h3>
+                <p class="muted">This simulates cloud restore by importing a previously exported JSON backup file.</p>
+                <input id="restoreInput" type="file" accept="application/json" />
+                <button id="restoreBtn" class="btn btn-primary" type="button">Restore Data</button>
+                <button id="resetBtn" class="btn btn-danger" type="button">Reset System</button>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <footer class="footer-note">
+          Developed as a Business Information Technology systems project demonstrating enterprise system design, analytics, cloud concepts, and cybersecurity fundamentals.
+        </footer>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
