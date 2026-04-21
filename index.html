@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< codex/build-smart-business-management-system-g3if0z
     <title>Smart Business Management System (SBMS)</title>
+=======
+    <title>Smart Business Management System</title>
+>>>>>>> main
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
+<<<<<<< codex/build-smart-business-management-system-g3if0z
     <section id="loginView" class="auth-layout">
       <article class="auth-card">
         <div class="auth-brand">
@@ -30,6 +35,20 @@
         <small class="muted">Demo password: <strong>Admin@123</strong></small>
       </article>
     </section>
+=======
+    <div id="loginView" class="auth-layout">
+      <div class="auth-card">
+        <h1>Smart Business Management System</h1>
+        <p class="muted">Secure access required to manage enterprise operations.</p>
+        <form id="loginForm" class="form-grid">
+          <label for="password">Admin Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required />
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <small class="muted">Demo password: <strong>Admin@123</strong></small>
+      </div>
+    </div>
+>>>>>>> main
 
     <div id="appView" class="app hidden">
       <aside class="sidebar">
@@ -37,8 +56,12 @@
           <h2>SBMS</h2>
           <p>Enterprise Suite</p>
         </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
         <nav class="nav-menu">
+=======
+        <nav>
+>>>>>>> main
           <button class="nav-link active" data-section="dashboardSection">Dashboard</button>
           <button class="nav-link" data-section="customersSection">Customers</button>
           <button class="nav-link" data-section="productsSection">Products</button>
@@ -49,10 +72,14 @@
 
       <div class="main-shell">
         <header class="topbar">
+<<<<<<< codex/build-smart-business-management-system-g3if0z
           <div>
             <h1 id="sectionTitle">Dashboard</h1>
             <p class="muted top-subtitle">Business operations and decision intelligence</p>
           </div>
+=======
+          <h1 id="sectionTitle">Dashboard</h1>
+>>>>>>> main
           <div class="top-actions">
             <button id="themeToggle" class="btn btn-ghost" type="button">🌙 Dark Mode</button>
             <button id="logoutBtn" class="btn btn-danger" type="button">Logout</button>
@@ -79,17 +106,25 @@
                 <p id="kpiPopular">—</p>
               </article>
             </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
             <article class="card">
               <h3>Revenue Trend</h3>
               <canvas id="revenueChart" aria-label="Revenue trend chart"></canvas>
             </article>
+=======
+            <div class="card">
+              <h3>Revenue Trend</h3>
+              <canvas id="revenueChart" aria-label="Revenue trend chart"></canvas>
+            </div>
+>>>>>>> main
           </section>
 
           <section id="customersSection" class="section">
             <div class="section-head">
               <h2>Customer Management</h2>
             </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
             <article class="card">
               <form id="customerForm" class="form-grid inline-3">
@@ -105,10 +140,24 @@
                   <input id="customerEmail" type="email" placeholder="e.g. alice@company.com" required />
                 </div>
 
+=======
+            <div class="card">
+              <form id="customerForm" class="form-grid inline-3">
+                <input type="hidden" id="customerId" />
+                <div>
+                  <label for="customerName">Customer Name</label>
+                  <input id="customerName" required placeholder="e.g. Alice Mokoena" />
+                </div>
+                <div>
+                  <label for="customerEmail">Email</label>
+                  <input id="customerEmail" type="email" required placeholder="e.g. alice@company.com" />
+                </div>
+>>>>>>> main
                 <div>
                   <label for="customerTier">Tier</label>
                   <select id="customerTier" required>
                     <option value="">Select tier</option>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
                     <option>Regular</option>
                     <option>Premium</option>
                     <option>VIP</option>
@@ -124,6 +173,20 @@
             </div>
 
             <article class="card table-card">
+=======
+                    <option>Standard</option>
+                    <option>Premium</option>
+                    <option>Enterprise</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" type="submit" id="saveCustomerBtn">Add Customer</button>
+              </form>
+            </div>
+            <div class="toolbar">
+              <input id="customerSearch" placeholder="Search customers by name/email" />
+            </div>
+            <div class="card table-card">
+>>>>>>> main
               <table>
                 <thead>
                   <tr>
@@ -136,13 +199,18 @@
                 </thead>
                 <tbody id="customerTableBody"></tbody>
               </table>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
             </article>
+=======
+            </div>
+>>>>>>> main
           </section>
 
           <section id="productsSection" class="section">
             <div class="section-head">
               <h2>Product Management</h2>
             </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
             <article class="card">
               <form id="productForm" class="form-grid inline-4">
@@ -158,10 +226,24 @@
                   <input id="productPrice" type="number" min="0" step="0.01" placeholder="0.00" required />
                 </div>
 
+=======
+            <div class="card">
+              <form id="productForm" class="form-grid inline-4">
+                <input type="hidden" id="productId" />
+                <div>
+                  <label for="productName">Product Name</label>
+                  <input id="productName" required placeholder="e.g. CRM Subscription" />
+                </div>
+                <div>
+                  <label for="productPrice">Price (ZAR)</label>
+                  <input id="productPrice" type="number" step="0.01" min="0" required placeholder="0.00" />
+                </div>
+>>>>>>> main
                 <div>
                   <label for="productCategory">Category</label>
                   <select id="productCategory" required>
                     <option value="">Select category</option>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
                     <option>Electronics</option>
                     <option>Accessories</option>
                     <option>Software</option>
@@ -169,6 +251,14 @@
                   </select>
                 </div>
 
+=======
+                    <option>Software</option>
+                    <option>Hardware</option>
+                    <option>Services</option>
+                    <option>Support</option>
+                  </select>
+                </div>
+>>>>>>> main
                 <div>
                   <label for="productSort">Sort By</label>
                   <select id="productSort">
@@ -177,6 +267,7 @@
                     <option value="priceDesc">Price (High-Low)</option>
                   </select>
                 </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
                 <button class="btn btn-primary" id="saveProductBtn" type="submit">Add Product</button>
               </form>
@@ -187,6 +278,15 @@
             </div>
 
             <article class="card table-card">
+=======
+                <button class="btn btn-primary" type="submit" id="saveProductBtn">Add Product</button>
+              </form>
+            </div>
+            <div class="toolbar">
+              <input id="productSearch" placeholder="Search products by name/category" />
+            </div>
+            <div class="card table-card">
+>>>>>>> main
               <table>
                 <thead>
                   <tr>
@@ -198,45 +298,69 @@
                 </thead>
                 <tbody id="productTableBody"></tbody>
               </table>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
             </article>
+=======
+            </div>
+>>>>>>> main
           </section>
 
           <section id="ordersSection" class="section">
             <div class="section-head">
               <h2>Order Management</h2>
             </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
             <article class="card">
+=======
+            <div class="card">
+>>>>>>> main
               <form id="orderForm" class="form-grid inline-4">
                 <div>
                   <label for="orderCustomer">Customer</label>
                   <select id="orderCustomer" required></select>
                 </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
+=======
+>>>>>>> main
                 <div>
                   <label for="orderProduct">Product</label>
                   <select id="orderProduct" required></select>
                 </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
+=======
+>>>>>>> main
                 <div>
                   <label for="orderQuantity">Quantity</label>
                   <input id="orderQuantity" type="number" min="1" value="1" required />
                 </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
+=======
+>>>>>>> main
                 <div>
                   <label>Calculated Total</label>
                   <div class="calculated" id="orderTotal">R 0.00</div>
                 </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
                 <button class="btn btn-primary" type="submit">Create Order</button>
               </form>
             </article>
 
+=======
+                <button class="btn btn-primary" type="submit">Create Order</button>
+              </form>
+            </div>
+>>>>>>> main
             <div class="toolbar inline">
               <select id="orderCustomerFilter">
                 <option value="all">Filter by customer: All</option>
               </select>
               <select id="orderSort">
+<<<<<<< codex/build-smart-business-management-system-g3if0z
                 <option value="dateDesc">Newest First</option>
                 <option value="dateAsc">Oldest First</option>
                 <option value="amountDesc">Highest Amount</option>
@@ -245,6 +369,15 @@
             </div>
 
             <article class="card table-card">
+=======
+                <option value="dateDesc">Newest first</option>
+                <option value="dateAsc">Oldest first</option>
+                <option value="amountDesc">Highest amount</option>
+                <option value="amountAsc">Lowest amount</option>
+              </select>
+            </div>
+            <div class="card table-card">
+>>>>>>> main
               <table>
                 <thead>
                   <tr>
@@ -259,13 +392,18 @@
                 </thead>
                 <tbody id="orderTableBody"></tbody>
               </table>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
             </article>
+=======
+            </div>
+>>>>>>> main
           </section>
 
           <section id="cloudSection" class="section">
             <div class="section-head">
               <h2>Cloud Simulation</h2>
             </div>
+<<<<<<< codex/build-smart-business-management-system-g3if0z
 
             <div class="grid two-col">
               <article class="card">
@@ -278,6 +416,18 @@
               <article class="card">
                 <h3>Restore from Backup</h3>
                 <p class="muted">Simulated cloud restore imports a backup file and restores the full system state.</p>
+=======
+            <div class="grid two-col">
+              <article class="card">
+                <h3>Backup to Cloud (JSON)</h3>
+                <p class="muted">This simulates cloud backup by exporting local data to a portable JSON file.</p>
+                <button id="backupBtn" class="btn btn-primary" type="button">Backup Data</button>
+                <button id="exportCsvBtn" class="btn btn-secondary" type="button">Export Orders CSV</button>
+              </article>
+              <article class="card">
+                <h3>Restore from Backup</h3>
+                <p class="muted">This simulates cloud restore by importing a previously exported JSON backup file.</p>
+>>>>>>> main
                 <input id="restoreInput" type="file" accept="application/json" />
                 <button id="restoreBtn" class="btn btn-primary" type="button">Restore Data</button>
                 <button id="resetBtn" class="btn btn-danger" type="button">Reset System</button>
